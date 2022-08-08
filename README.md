@@ -9,7 +9,7 @@ Robot and Artificial Intelligence Lab, Jiaying University, China
 ## Clone repo
 
 ```shell
-git clone 
+git clone https://github.com/JYURAIL/conch.git
 ```
 ```shell
 pip install -r requirement.txt
@@ -24,4 +24,4 @@ python main_train_TiSANCR.py
 
 |Method|Original Link|
 |---|---|
-|TiSANCR||
+|TiSANCR|https://github.com/JYURAIL/TiSANCR|
