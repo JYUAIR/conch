@@ -6,6 +6,8 @@ from data.loading.base import Dataset, DataLoader, LoaderType
 from experiment.net import TiSANCR
 from config import Config
 from config.base import Default
+from experiment.training import Trainer
+from experiment.training.TiSANCR_trainer import TiSANCR_Trainer
 
 
 class Selector:
@@ -30,15 +32,21 @@ class Selector:
     def create_device(self) -> torch.device:
         return torch.device(self.config.device)
 
+    def create_trainer(self, **kwargs) -> Trainer:
+        trainer_class = globals()[f'{self.config.model}_Trainer']
+        if trainer_class is TiSANCR_Trainer:
+            trainer = trainer_class(kwargs['dataset'], self.config)
+        return trainer
+
     def create_optimizer(self, **kwargs) -> torch.optim.Optimizer:
         if self.config.model == 'TiSANCR':
             optimizer = optim.Adam(kwargs['net_parameters'], lr=self.config.lr, weight_decay=self.config.l2)
         return optimizer
 
-    def create_dataset(self, data, config: Config) -> Dataset:
+    def create_dataset(self, **kwargs) -> Dataset:
         dataset_class = globals()[f'{self.config.model}_Dataset']
         if dataset_class is TiSANCR_Dataset:
-            dataset = dataset_class(data, config)
+            dataset = dataset_class(kwargs['data'], self.config)
         return dataset
 
     def create_dataloader(self, dataset: Dataset, dataloader_tyep: LoaderType) -> DataLoader:

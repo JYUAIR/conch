@@ -1,7 +1,6 @@
 import sqlite3
 
-# db_file = 'experiment_data.sqlite'
-db_file = '/Users/h/Project/conch/experiment_data.sqlite'
+db_file = 'database/experiment_data.sqlite'
 
 
 class ExperimentDatabase:
