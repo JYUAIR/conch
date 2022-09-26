@@ -43,6 +43,9 @@ class EventManager:
 
 
 class Editor:
+    """
+        监视器更新类
+    """
     def __init__(self):
         self.events = EventManager()
 

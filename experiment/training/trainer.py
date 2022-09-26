@@ -9,6 +9,12 @@ from experiment.util import load_checkpoint
 
 
 class Trainer:
+    """
+        训练器类父类
+
+        子类推荐实现所有接口
+        子类命名遵循：模型名_Trainer
+    """
     def __init__(self, dataset: Dataset, config: Config):
         self.config = config
         self._selector = Selector(self.config)

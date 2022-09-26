@@ -11,6 +11,8 @@ class Default:
         须在defaultConfiguration方法中
         声明所有参数以及其类型和默认值
         没有默认值的，使用None
+
+        子类命名需遵循：模型名_Default
     """
 
     def __init__(self):

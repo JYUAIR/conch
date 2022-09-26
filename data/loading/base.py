@@ -4,6 +4,11 @@ from config import Config
 
 
 class Dataset:
+    """
+        数据集类父类
+
+        子类命名遵循：模型名_Dataset
+    """
     def __init__(self, data, config: Config):
         self._data = data
         self._config = config
@@ -20,6 +25,11 @@ class LoaderType(Enum):
 
 
 class DataLoader:
+    """
+            数据迭代器类父类
+
+            子类命名遵循：模型名_DataLoader
+        """
     def __init__(self, dataset: Dataset, config: Config):
         self._dataset = dataset
         self._config = config
